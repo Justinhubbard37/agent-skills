@@ -25,7 +25,7 @@ agy plugin install https://github.com/addyosmani/agent-skills.git
    agy plugin install /path/to/agent-skills
    ```
 
-This will validate the plugin and install it into your global Antigravity configuration directory (`~/.gemini/antigravity-cli/plugins/agent-skills/`).
+This validates and installs the plugin. The install location depends on your `agy` version: recent releases (e.g. 1.1.9) place it under `~/.gemini/config/plugins/agent-skills/`, while earlier ones used `~/.gemini/antigravity-cli/plugins/agent-skills/`. Run `agy plugin list` to confirm where yours landed.
 
 ### Option 2: Import from Gemini CLI
 
@@ -57,6 +57,8 @@ The plugin registers 8 custom slash commands: 7 lifecycle commands plus the `/we
 | `/webperf` | Audit browser-facing apps for Core Web Vitals and performance issues | `web-performance-auditor` |
 
 Each command automatically invokes the corresponding skill and guides the agent step-by-step.
+
+> **If the slash commands don't appear:** the command definitions live in `commands/*.toml` at the repo root. Confirm the plugin is enabled with `agy plugin list`, then start a fresh `agy` session so it re-scans commands. If they still don't register on your version, please note it on [#445](https://github.com/addyosmani/agent-skills/issues/445) with your `agy --version` and `agy plugin list` output.
 
 > **Note:** Use `/planning` instead of `/plan` to avoid conflicts with Antigravity's internal plan-generation command.
 
